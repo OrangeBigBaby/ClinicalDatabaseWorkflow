@@ -18,11 +18,18 @@ workflow:
 
 toolchain:
   local_dependencies_dir: external_projects
-  expected_tools:
-    - name: paper-framework-figure-studio-pro
-      purpose: manuscript framework figure ideation
-    - name: Visiomaster
-      purpose: editable figure reconstruction and flowchart rendering
-    - name: nature-skills
-      purpose: scientific writing, polishing, and figure-style references
+  tool_roles:
+    - role: framework_figure_ideation
+      purpose: convert manuscript logic into a framework figure specification
+    - role: editable_diagram_generation
+      purpose: rebuild figures and participant-selection flowcharts in editable form
+    - role: scientific_writing_support
+      purpose: support conservative scientific writing, polishing, citation checks, and figure-style review
 
+references_and_local_dependencies:
+  - name: paper-framework-figure-studio-pro
+    purpose: framework figure ideation
+  - name: Visiomaster
+    purpose: editable figure reconstruction and flowchart rendering
+  - name: nature-skills
+    purpose: scientific writing, polishing, citation, and figure-style references

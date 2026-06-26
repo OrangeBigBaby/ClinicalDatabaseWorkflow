@@ -1,71 +1,169 @@
 # Clinical Database Workflow
 
-This document describes the public product workflow and the visible outputs produced at each stage.
+This document defines the structured workflow and the visible outputs produced at each stage.
 
-## 1. Evidence Brief
+## Stage 1: Question Intake
 
-Input:
+Purpose:
 
-- clinical question
+- convert a broad clinical idea into a searchable, analyzable research question
+
+Inputs:
+
 - disease or clinical population
-- exposure, indicator, biomarker, or model target
+- exposure, indicator, biomarker, risk score, or model target
 - candidate outcome
 - candidate database
+- preferred study design
 
-Output:
+Tool actions:
 
-- concise literature coverage table
-- verified citation list
-- known database and method combinations
-- missing full-text list, when applicable
+- standardize terms
+- define population, exposure, comparator, outcome, and database scope
+- create a project slug
 
-## 2. Database Feasibility Check
+Outputs:
 
-Output:
+- project brief
+- terminology list
 
-- data-source fit summary
-- cohort definition fields
-- exposure and outcome availability
-- covariate availability
-- major bias and missing-data notes
+Gate:
 
-## 3. Analysis Output Contract
+- the question must be specific enough for literature search and database feasibility review
 
-Output:
+## Stage 2: Evidence Mapping
 
-- baseline table shell
-- primary model table shell
-- sensitivity-analysis shell
-- subgroup-analysis shell
-- optional prediction-model evaluation shell
+Purpose:
 
-## 4. Figure Specification
+- determine what has already been studied and where evidence gaps remain
 
-Output:
+Tool actions:
 
-- participant-selection flowchart specification
-- analysis pipeline figure specification
-- manuscript framework figure specification
-- editable figure reconstruction notes
+- search literature sources
+- extract disease, indicator, outcome, database, method, and study design
+- mark full-text availability
+- create a topic matrix
 
-## 5. Manuscript Shell
+Outputs:
 
-Output:
+- `evidence_brief.md`
+- `topic_matrix.csv`
+- missing full-text list
 
-- title options
-- one-sentence argument
-- structured section outline
-- claim-evidence map
-- conservative limitation notes
-- references placeholder
+Gate:
 
-## 6. Review Gate
+- no novelty claim is allowed unless the search strategy and topic matrix support it
 
-Output:
+## Stage 3: Database Feasibility
 
-- unsupported claim list
-- citation verification list
-- causal-language check
-- model-leakage check
-- reporting-guideline check
+Purpose:
+
+- determine whether the candidate database can support the clinical question
+
+Tool actions:
+
+- map cohort fields
+- map exposure and outcome variables
+- map covariates
+- identify missingness, temporal-order, and selection-bias risks
+
+Outputs:
+
+- `database_feasibility.md`
+
+Gate:
+
+- the workflow must flag infeasible variables before analysis or writing begins
+
+## Stage 4: Analysis Contract
+
+Purpose:
+
+- define exactly which analysis outputs are required before manuscript writing
+
+Tool actions:
+
+- specify baseline table requirements
+- specify primary model outputs
+- specify sensitivity and subgroup analyses
+- specify optional machine-learning evaluation only when justified
+
+Outputs:
+
+- `analysis_contract.md`
+
+Gate:
+
+- each planned result must map to a future manuscript claim or figure/table
+
+## Stage 5: Figure And Flowchart Specification
+
+Purpose:
+
+- turn the study logic into editable visual specifications
+
+Tool actions:
+
+- sketch the manuscript framework figure
+- define participant-selection flowchart nodes and exclusion counts
+- define analysis pipeline figure panels
+- preserve editability through structured figure specifications
+
+Outputs:
+
+- `figure_specs/participant_selection_flowchart.yaml`
+- `figure_specs/manuscript_framework.yaml`
+
+Gate:
+
+- figure specifications must be editable and traceable to the study design
+
+## Stage 6: Manuscript Shell
+
+Purpose:
+
+- build a writing-ready manuscript structure without inventing results
+
+Tool actions:
+
+- generate title options
+- write the one-sentence argument
+- build section-level outline
+- build claim-evidence map
+- place placeholders where evidence is missing
+
+Outputs:
+
+- `manuscript_shell.md`
+
+Gate:
+
+- every major claim must be supported, inferred with caution, or marked as needing evidence
+
+## Stage 7: Review Gate
+
+Purpose:
+
+- prevent overclaiming and reviewer-visible scientific weaknesses
+
+Tool actions:
+
+- check unsupported claims
+- verify citation status
+- check causal language
+- check model-leakage risk
+- check reporting-guideline fit
+- check conservative limitation wording
+
+Outputs:
+
+- `review_gate.md`
+
+Gate:
+
+- unresolved red flags must remain visible in the output rather than being hidden in polished prose
+
+## References And Local Dependencies
+
+The workflow can use local copies of external projects for figure ideation, editable diagram generation, and scientific writing support. These dependencies live under `external_projects/` and are not committed to the public repository.
 
