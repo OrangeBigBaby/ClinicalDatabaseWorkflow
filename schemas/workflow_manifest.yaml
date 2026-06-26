@@ -16,6 +16,20 @@ workflow:
     - draft_manuscripts
     - third_party_tool_repositories
 
+public_database_modules:
+  - name: nhanes
+    status: template_ready
+    template_dir: templates/public_database/nhanes
+    visible_outputs:
+      - sample_selection_flow
+      - weighted_table1
+      - weighted_logistic_models
+      - rcs_nonlinear_analysis
+      - sensitivity_models
+      - subgroup_models
+      - optional_ml_prediction
+      - optional_shap_interpretation
+
 toolchain:
   local_dependencies_dir: external_projects
   tool_roles:

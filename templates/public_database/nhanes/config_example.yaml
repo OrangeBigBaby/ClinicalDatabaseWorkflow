@@ -1,0 +1,56 @@
+project:
+  slug: example_nhanes_public_database_study
+  database: NHANES
+  cycles:
+    - {cycle: "2003-2004", suffix: "C"}
+    - {cycle: "2005-2006", suffix: "D"}
+    - {cycle: "2007-2008", suffix: "E"}
+    - {cycle: "2009-2010", suffix: "F"}
+    - {cycle: "2011-2012", suffix: "G"}
+    - {cycle: "2013-2014", suffix: "H"}
+    - {cycle: "2015-2016", suffix: "I"}
+    - {cycle: "2017-2018", suffix: "J"}
+
+survey_design:
+  id: sdmvpsu
+  strata: sdmvstra
+  weight: analysis_weight
+  note: "For multi-cycle fasting subsample analyses, use WTSAF2YR divided by number_of_cycles."
+
+outcome:
+  name: outcome
+  source_module: MCQ
+  source_variable: MCQ160F
+  coding: "1=yes, 2=no, otherwise missing"
+
+exposures:
+  - name: exposure_1
+    label: "Exposure 1"
+    formula_note: "Replace with verified formula and unit conversions."
+  - name: exposure_2
+    label: "Exposure 2"
+    formula_note: "Replace with verified formula and unit conversions."
+
+covariates:
+  continuous:
+    - age
+    - bmi
+    - waist
+    - sbp
+    - dbp
+  categorical:
+    - sex
+    - race
+    - education
+    - pir_group
+    - smoking
+    - alcohol
+    - hypertension
+    - diabetes
+
+analysis:
+  minimum_age: 45
+  quantile_groups: 4
+  train_test_split: 0.30
+  random_state: 2026
+

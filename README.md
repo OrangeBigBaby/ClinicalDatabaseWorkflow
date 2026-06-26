@@ -4,6 +4,38 @@ ClinicalDatabaseWorkflow is a structured clinical database research workflow for
 
 The public repository presents the workflow product and its visible deliverables. Local research plans, private prompts, downloaded full texts, third-party tool repositories, private data, generated manuscripts, and draft figures are intentionally ignored.
 
+## Product Value
+
+ClinicalDatabaseWorkflow is built for high-throughput public-database manuscript production.
+
+- **Public-database first**: converts NHANES, CHARLS, GBD, MIMIC/eICU, SEER, and similar public datasets into a repeatable manuscript workflow.
+- **Topic-to-output chain**: connects literature mapping, database feasibility, statistical analysis, figure planning, manuscript structure, and review gates.
+- **Reusable analysis templates**: provides prebuilt NHANES templates for cohort construction, sample-selection flow, weighted Table 1, survey-weighted regression, RCS, sensitivity analysis, subgroup analysis, machine learning, and SHAP interpretation.
+- **Reviewer-aware outputs**: keeps every manuscript claim tied to evidence, model output, or a visible placeholder.
+- **Private strategy separation**: keeps local plans, downloaded papers, private datasets, third-party repositories, and draft manuscripts outside the public repository.
+
+## Public Database Module
+
+The first reusable module is the NHANES public-database module. It packages a repeatable analysis path for cross-sectional association and optional prediction-model studies:
+
+```text
+raw XPT files
+  -> merged analytic cohort
+  -> sample-selection flow
+  -> weighted Table 1
+  -> weighted logistic models
+  -> RCS nonlinear analysis
+  -> sensitivity and subgroup analyses
+  -> optional ML and SHAP outputs
+  -> manuscript shell and review gate
+```
+
+Template entry point:
+
+```text
+templates/public_database/nhanes/
+```
+
 ## Output Package
 
 Each workflow run is organized around a compact result package:
@@ -70,6 +102,7 @@ Used to:
 ```text
 docs/
   output_contract.md
+  public_database_product.md
   workflow.md
 examples/
   product_result_brief.md
@@ -78,6 +111,8 @@ schemas/
   workflow_manifest.yaml
 templates/
   manuscript_shell.md
+  public_database/
+    nhanes/
 scripts/
   check_local_toolchain.ps1
 ```
@@ -116,4 +151,3 @@ external_projects/
   Visiomaster/
   nature-skills/
 ```
-
