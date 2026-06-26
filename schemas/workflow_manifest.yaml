@@ -1,0 +1,28 @@
+workflow:
+  name: ClinicalDatabaseWorkflow
+  version: 0.1.0
+  public_outputs:
+    - evidence_brief
+    - topic_matrix
+    - database_feasibility
+    - analysis_contract
+    - figure_specs
+    - manuscript_shell
+    - review_gate
+  local_only_inputs:
+    - downloaded_full_texts
+    - private_data
+    - strategy_notes
+    - draft_manuscripts
+    - third_party_tool_repositories
+
+toolchain:
+  local_dependencies_dir: external_projects
+  expected_tools:
+    - name: paper-framework-figure-studio-pro
+      purpose: manuscript framework figure ideation
+    - name: Visiomaster
+      purpose: editable figure reconstruction and flowchart rendering
+    - name: nature-skills
+      purpose: scientific writing, polishing, and figure-style references
+

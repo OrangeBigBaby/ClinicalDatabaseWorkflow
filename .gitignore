@@ -1,0 +1,23 @@
+# Local-only strategy, plans, drafts, and downloaded tools
+local_private_plan/
+external_projects/
+
+# Article inputs and generated manuscript artifacts
+input_papers/
+private_data/
+outputs/
+manuscripts/
+figures/generated/
+
+# Environment and credentials
+.env
+.Renviron
+*.key
+*.token
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
